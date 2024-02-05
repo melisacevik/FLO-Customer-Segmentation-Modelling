@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0076696-8aa2-458a-a3e8-7f501dc70322" name="Changes" comment="add FLO-Customer-Segmentation">
+    <list default="true" id="c0076696-8aa2-458a-a3e8-7f501dc70322" name="Changes" comment="add FLO-Customer-Segmentation solutions">
+      <change afterPath="$PROJECT_DIR$/FLOCLTVPrediction/FLO_CLTV_Prediction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLOCLTVPrediction/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/segmentation.py" afterDir="false" />
     </list>
@@ -23,30 +25,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2butXuDhADsagWr1dgfbG2jpSg4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/FLOCLTVPrediction" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -65,7 +68,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1707076835565</updated>
-      <workItem from="1707076836871" duration="14232000" />
+      <workItem from="1707076836871" duration="15470000" />
+      <workItem from="1707136795435" duration="231000" />
+      <workItem from="1707137032858" duration="11048000" />
+      <workItem from="1707153433070" duration="5350000" />
     </task>
     <task id="LOCAL-00001" summary="add FLO-Customer-Segmentation">
       <option name="closed" value="true" />
@@ -75,7 +81,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707085901363</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add FLO-Customer-Segmentation solutions">
+      <option name="closed" value="true" />
+      <created>1707116304666</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707116304666</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +97,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add FLO-Customer-Segmentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="add FLO-Customer-Segmentation" />
+    <MESSAGE value="add FLO-Customer-Segmentation solutions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add FLO-Customer-Segmentation solutions" />
   </component>
 </project>

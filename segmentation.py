@@ -202,6 +202,8 @@ df_new = create_preparation(df)
 
 today_date = dt.datetime(2021, 6, 1)
 
+# analiz_tarihi = df["last_order_date"].max() + pd.DateOffset(days=2) # bu da olur
+
 # customer_id, recency, frequnecy ve monetary değerlerinin yer aldığı yeni bir rfm dataframe
 
 pd.set_option('display.width', 500)
@@ -224,7 +226,7 @@ df.head()
 # Bu skorları recency_score, frequency_score ve monetary_score olarak kaydedilmesi
 
 rfm["recency_score"] = pd.qcut(rfm["recency"], q=5, labels=[5,4,3,2,1])
-rfm["monetary_score"] = pd.qcut(rfm["monetary"], q=5, labels=[5,4,3,2,1])
+rfm["monetary_score"] = pd.qcut(rfm["monetary"], q=5, labels=[1,2,3,4,5])
 rfm["frequency_score"] = pd.qcut(rfm['frequency'].rank(method="first"), 5, labels=[1, 2, 3, 4, 5]) #oluşturulan aralıklarda unique değerler yer almadığı için error veriyor ( rank() )
 
 # recency_score ve frequency_score’u tek bir değişken olarak ifade edilmesi ve RF_SCORE olarak kaydedilmesi
