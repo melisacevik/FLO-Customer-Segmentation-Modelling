@@ -8,7 +8,7 @@ FLO, online ayakkabı mağazası olarak müşteri segmentasyonu yaparak, müşte
 
 ## İlgili Dosyalar
 
-- İndirim ve kampanya müşterileri ilgili departmanın talebine göre özel olarak oluşturulmuştur. İndirim ve tanımlanacak kampanyalar için belirlenen müşteri ID'leri bu dosyada yer almaktadır.
+- İndirim ve kampanya müşterileri ilgili departmanın talebine göre özel olarak oluşturulmuştur. İndirim ve tanımlanacak kampanyalar için belirlenen müşteri ID'leri dosyada yer almaktadır.
 
 ## RFM Analizi Nedir?
 
