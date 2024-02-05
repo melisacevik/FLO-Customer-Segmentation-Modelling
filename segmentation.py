@@ -76,6 +76,7 @@
 
 import datetime as dt
 import pandas as pd
+import numpy as np
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
@@ -199,11 +200,22 @@ df_new = create_preparation(df)
 
 # Veri setindeki en son alışverişin yapıldığı tarihten 2 gün sonrasını analiz tarihi
 
-
+today_date = dt.datetime(2021, 6, 1)
 
 # customer_id, recency, frequnecy ve monetary değerlerinin yer aldığı yeni bir rfm dataframe
 
+pd.set_option('display.width', 500)
 
+rfm = df.groupby("master_id").agg({
+    'last_order_date': lambda x: (today_date - x.max()).days,  # Recency
+    'order_num_total_ever_offonline': 'mean',  # Frequency
+    'value_total_ever_offonline': 'sum'  # Monetary
+    }).reset_index()
+
+rfm.columns = ['master_id', 'recency', 'frequency', 'monetary']
+
+rfm.describe().T
+df.head()
 ###############################################################
 # GÖREV 3: RF ve RFM Skorlarının Hesaplanması (Calculating RF and RFM Scores)
 ###############################################################
@@ -211,18 +223,32 @@ df_new = create_preparation(df)
 #  Recency, Frequency ve Monetary metriklerini qcut yardımı ile 1-5 arasında skorlara çevrilmesi ve
 # Bu skorları recency_score, frequency_score ve monetary_score olarak kaydedilmesi
 
-
-
+rfm["recency_score"] = pd.qcut(rfm["recency"], q=5, labels=[5,4,3,2,1])
+rfm["monetary_score"] = pd.qcut(rfm["monetary"], q=5, labels=[5,4,3,2,1])
+rfm["frequency_score"] = pd.qcut(rfm['frequency'].rank(method="first"), 5, labels=[1, 2, 3, 4, 5]) #oluşturulan aralıklarda unique değerler yer almadığı için error veriyor ( rank() )
 
 # recency_score ve frequency_score’u tek bir değişken olarak ifade edilmesi ve RF_SCORE olarak kaydedilmesi
-
+rfm["RF_SCORE"] = rfm["recency_score"].astype(str) + rfm["frequency_score"].astype(str)
 
 ###############################################################
 # GÖREV 4: RF Skorlarının Segment Olarak Tanımlanması
 ###############################################################
 
 # Oluşturulan RFM skorların daha açıklanabilir olması için segment tanımlama ve  tanımlanan seg_map yardımı ile RF_SCORE'u segmentlere çevirme
+seg_map = {
+    r'[1-2][1-2]': 'hibernating',
+    r'[1-2][3-4]': 'at_Risk',
+    r'[1-2]5': 'cant_loose',
+    r'3[1-2]': 'about_to_sleep',
+    r'33': 'need_attention',
+    r'[3-4][4-5]': 'loyal_customers',
+    r'41': 'promising',
+    r'51': 'new_customers',
+    r'[4-5][2-3]': 'potential_loyalists',
+    r'5[4-5]': 'champions'
+}
 
+rfm["segment"] = rfm["RF_SCORE"].replace(seg_map, regex=True)
 
 ###############################################################
 # GÖREV 5: Aksiyon zamanı!
@@ -230,17 +256,44 @@ df_new = create_preparation(df)
 
 # 1. Segmentlerin recency, frequnecy ve monetary ortalamalarını inceleyiniz.
 
-
+rfm[["segment", "recency", "frequency", "monetary"]].groupby("segment").agg(["mean", "count"])
 
 # 2. RFM analizi yardımı ile 2 case için ilgili profildeki müşterileri bulunuz ve müşteri id'lerini csv ye kaydediniz.
+
+# "cant_loose" segmentindeki müşterilerin ID'leri
+cant_loose_df = rfm.loc[rfm["segment"] == "cant_loose", ["master_id"]]
+cant_loose_df["segment"] = "cant_loose"
+
+# "champions" segmentindeki müşterilerin ID'leri
+champions_df = rfm.loc[rfm["segment"] == "champions", ["master_id"]]
+champions_df["segment"] = "champions"
+
+new_df = pd.concat([cant_loose_df, champions_df])
+
+new_df.to_csv("champions_cantloose.csv", index=False)
+
+#"champions" ve "cant loose" segmentine ait "master_id" değerlerini içeren bir Series
+
 
 # a. FLO bünyesine yeni bir kadın ayakkabı markası dahil ediyor. Dahil ettiği markanın ürün fiyatları genel müşteri tercihlerinin üstünde. Bu nedenle markanın
 # tanıtımı ve ürün satışları için ilgilenecek profildeki müşterilerle özel olarak iletişime geçeilmek isteniliyor. Bu müşterilerin sadık  ve
 # kadın kategorisinden alışveriş yapan kişiler olması planlandı. Müşterilerin id numaralarını csv dosyasına yeni_marka_hedef_müşteri_id.cvs
 # olarak kaydediniz.
 
+df.head()
+loyal_and_female_shop = rfm.loc[(rfm["segment"] == 'loyal_customers') & df["interested_in_categories_12"].str.contains("KADIN"), "master_id"]
 
+loyal_and_female_shop.to_csv("yeni_marka_hedef_musteri_id")
 
 # b. Erkek ve Çoçuk ürünlerinde %40'a yakın indirim planlanmaktadır. Bu indirimle ilgili kategorilerle ilgilenen geçmişte iyi müşterilerden olan ama uzun süredir
 # alışveriş yapmayan ve yeni gelen müşteriler özel olarak hedef alınmak isteniliyor. Uygun profildeki müşterilerin id'lerini csv dosyasına indirim_hedef_müşteri_ids.csv
 # olarak kaydediniz.
+
+indirim_hedef_musteri_ids = rfm.loc[
+    ((rfm["segment"] == 'about_to_sleep') | (rfm["segment"] == 'new_customers')) &
+    df["interested_in_categories_12"].str.contains("ERKEK|COCUK", case=False),
+    "master_id"
+]
+
+indirim_hedef_musteri_ids.to_csv("indirim_hedef_musteri_ids.csv", index=False)
+

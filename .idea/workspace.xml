@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0076696-8aa2-458a-a3e8-7f501dc70322" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/FLO-Customer-Segmentation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flo_data_20k.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/segmentation.py" afterDir="false" />
+    <list default="true" id="c0076696-8aa2-458a-a3e8-7f501dc70322" name="Changes" comment="add FLO-Customer-Segmentation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/segmentation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +65,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1707076835565</updated>
-      <workItem from="1707076836871" duration="8675000" />
+      <workItem from="1707076836871" duration="14232000" />
     </task>
+    <task id="LOCAL-00001" summary="add FLO-Customer-Segmentation">
+      <option name="closed" value="true" />
+      <created>1707085901363</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707085901363</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add FLO-Customer-Segmentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add FLO-Customer-Segmentation" />
   </component>
 </project>
